@@ -24,5 +24,9 @@ jobs:
 
       - name: Do an install
         run: |
-          ${{ matrix.cmd }} p4p==4.2.0
+          ${{ matrix.cmd }} p4p==4.2.0 && pip freeze
+
+      - name: Check it works
+        run: |
+          python -c "from p4p import *"
   
