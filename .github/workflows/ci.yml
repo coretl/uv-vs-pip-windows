@@ -1,0 +1,22 @@
+on:
+  push:
+
+jobs:
+  run:
+    strategy:
+      matrix:
+        runs-on: ["ubuntu-latest", "windows-latest"]
+        cmd: ["uv pip install", "pip install"]        
+
+    runs-on: ${{ matrix.runs-on }}
+        
+    steps:
+      - name: Install uv
+        uses: astral-sh/setup-uv@v5
+        with:
+          python-version: "3.12"
+
+      - name: Do an install
+        run: |
+          ${{ matrix.cmd }} p4p==4.2.0
+  
