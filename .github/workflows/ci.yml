@@ -6,7 +6,8 @@ jobs:
     strategy:
       matrix:
         runs-on: ["ubuntu-latest", "windows-latest"]
-        cmd: ["uv pip install", "pip install"]        
+        cmd: ["uv pip install", "pip install"]       
+      fail-fast: false 
 
     runs-on: ${{ matrix.runs-on }}
         
@@ -15,6 +16,7 @@ jobs:
         uses: astral-sh/setup-uv@v5
         with:
           python-version: "3.12"
+          enable-cache: false
 
       - name: Do an install
         run: |
