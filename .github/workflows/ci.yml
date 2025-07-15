@@ -7,7 +7,7 @@ jobs:
       matrix:
         runs-on: ["ubuntu-latest", "windows-latest"]
         python-version: ["3.11", "3.12", "3.13"]
-        cmd: ["uv pip install --system", "pip install"]       
+        cmd: ["uv pip install --system --prerelease=allow", "pip install"]       
       fail-fast: false 
 
     runs-on: ${{ matrix.runs-on }}
